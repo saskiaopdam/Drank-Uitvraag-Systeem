@@ -1,0 +1,81 @@
+databaseChangeLog:
+  - logicalFilePath: ./changelog/initial/db.changelog.initial.tables.yaml
+  - changeSet:
+      id: 1_create_person_table
+      author: sta
+      changes:
+        - createTable:
+            tableName: PERSON
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: USERNAME
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: FIRST_NAME
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: LAST_NAME
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2_alter_username_datatype
+      author: sta
+      changes:
+        - modifyDataType:
+            tableName: PERSON
+            columnName: USERNAME
+            newDataType: VARCHAR(10)
+  - changeSet:
+      id: 3_create_preference_table
+      author: sta
+      changes:
+        - createTable:
+            tableName: PREFERENCE
+            columns:
+              - column:
+                  name: ID
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: EXPRESS_CODE
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: DESCRIPTION
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: EXTRAS
+                  type: varchar(100)
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: 4_add_preference_id
+      author: sta
+      changes:
+        - addColumn:
+            tableName: PERSON
+            columns:
+              - column:
+                  name: PREFERENCE_ID
+                  type: int
+                  constraints:
+                    nullable: false

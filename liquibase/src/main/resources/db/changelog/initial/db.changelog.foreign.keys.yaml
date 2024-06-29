@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - logicalFilePath: ./changelog/initial/db.changelog.foreign.keys.yaml
+  - changeSet:
+      id: 1_add_foreign_key_constraint
+      author: sta
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: PREFERENCE_ID
+            baseTableName: PERSON
+            constraintName: FK_PERSON_PREFERENCE
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: ID
+            referencedTableName: PREFERENCE

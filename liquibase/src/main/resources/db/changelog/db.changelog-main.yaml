@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: initial/db.changelog.initial.tables.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: initial/db.changelog.foreign.keys.yaml
+      relativeToChangelogFile: true
