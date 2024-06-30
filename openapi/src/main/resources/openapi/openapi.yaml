@@ -1,0 +1,175 @@
+openapi: 3.0.2
+info:
+  title: "Drank Uitvraag Systeem"
+  version: 0.1.0
+paths:
+  /person:
+    get:
+      tags:
+        - person
+      responses:
+        200:
+          description: "Get all Persons"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "../schemas/person.json"
+        default:
+          description: "Something went wrong"
+    post:
+      tags:
+        - person
+      requestBody:
+        description: "Person to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/person.json"
+      responses:
+        201:
+          description: "Person created"
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/person.json"
+        400:
+          description: "Body not valid - cannot create new person"
+        default:
+          description: "Something went wrong"
+    put:
+      tags:
+        - person
+      requestBody:
+        description: "Person to update"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/person.json"
+      responses:
+        200:
+          description: "Person updated"
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/person.json"
+        400:
+          description: "Body not valid - cannot update person"
+        default:
+          description: "Something went wrong"
+  /person/{id}:
+    get:
+      tags:
+        - person
+      parameters:
+        - name: id
+          in: path
+          description: Unique ID for person
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: "Get person by ID"
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/person.json"
+        404:
+          description: "No person found with that ID"
+        default:
+          description: "Something went wrong"
+    delete:
+      tags:
+        - person
+      parameters:
+        - name: id
+          in: path
+          description: Unique ID for person
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        204:
+          description: "Delete person by ID"
+        404:
+          description: "No person found with that ID"
+        default:
+          description: "Something went wrong"
+  /preference:
+    get:
+      tags:
+        - preference
+      responses:
+        200:
+          description: "Get all Preferences"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "../schemas/preference.json"
+        default:
+          description: "Something went wrong"
+    post:
+      tags:
+        - preference
+      requestBody:
+        description: "Preference to create"
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/preference.json"
+      responses:
+        201:
+          description: "Preference created"
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/preference.json"
+        400:
+          description: "Body not valid - cannot create new preference"
+        default:
+          description: "Something went wrong"
+  /preference/{id}:
+    get:
+      tags:
+        - preference
+      parameters:
+        - name: id
+          in: path
+          description: Unique ID for preference
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: "Get preference by ID"
+          content:
+            application/json:
+              schema:
+                $ref: "../schemas/preference.json"
+        404:
+          description: "No preference found with that ID"
+        default:
+          description: "Something went wrong"
+  /drinkorder:
+    get:
+      tags:
+        - drinkorder
+      responses:
+        200:
+          description: "Get a drinkorder"
+          content:
+            application/json:
+              schema:
+                 $ref: "../schemas/drink-order.json"
+        default:
+          description: "Something went wrong"

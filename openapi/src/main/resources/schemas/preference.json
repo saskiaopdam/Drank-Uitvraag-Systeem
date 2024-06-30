@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "expressCode": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "description": {
+      "type": "string"
+    },
+    "extras": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "expressCode", "description"
+  ]
+}
